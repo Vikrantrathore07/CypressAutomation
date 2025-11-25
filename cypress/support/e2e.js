@@ -16,4 +16,6 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
-require('cypress-xpath');
+require('cypress-xpath');   //we should include this here to use cypress-xpath plugin throughout the project
+
+import ("cypress-mochawesome-reporter/register"); //for html reports
