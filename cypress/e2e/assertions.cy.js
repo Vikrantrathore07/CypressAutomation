@@ -8,17 +8,27 @@
 // 2)Explicit Assertions
 // a)expect     bdd approach of framework
 // b)assert     tdd approach of framework
+// -----------------------------------------------------------------------
+// Common Assertion Types
+// 1)Visibility: should('be.visible')
+// 2)Existence: should('exist')
+// 3)Equality: should('eq', 'expectedValue')
+// 4)Text: should('contain', 'text') or should('have.text', 'exact text')
+// 5)CSS Class: should('have.class', 'active')
+// 6)Attribute: should('have.attr', 'href', '/home')
+// 7)Length: should('have.length', 6) (useful for OTP fields)
+// 8)URL: cy.url().should('include', '/dashboard')
 
 
-describe('Assertions in Cypress',() => {
+describe('Assertions in Cypress', () => {
 
-    it('Implicit Assertions', () =>{
+    it('Implicit Assertions', () => {
 
         cy.visit("https://nhaiuat.dic.org.in/login");
 
         // cy.url().should('include','dic.org.in').should('eq','https://nhaiuat.dic.org.in/login').should('contain', 'dic');
 
-        cy.url().should('include','dic.org.in').and('eq','https://nhaiuat.dic.org.in/login');
+        cy.url().should('include', 'dic.org.in').and('eq', 'https://nhaiuat.dic.org.in/login');
         cy.url().should('contain', 'dic');
         cy.url().should('not.contain', 'dic');
 
@@ -34,7 +44,7 @@ describe('Assertions in Cypress',() => {
     })
 
 
-        it('Explicit Assertions', () =>{
+    it('Explicit Assertions', () => {
 
         cy.visit("https://nhaiuat.dic.org.in/login");
         // cy.get("input[placeholder='Username']").then( (e) => {
@@ -48,10 +58,10 @@ describe('Assertions in Cypress',() => {
         // })
 
         cy.get("input[placeholder='username']").type("Admin"),
-        cy.get("input[placeholder='password']").type("Admin"),
-        cy.get("button[type='submit']").click();
+            cy.get("input[placeholder='password']").type("Admin"),
+            cy.get("button[type='submit']").click();
 
-       
+
     })
 }
 )
