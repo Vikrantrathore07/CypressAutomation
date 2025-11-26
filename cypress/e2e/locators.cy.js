@@ -13,12 +13,12 @@
 //
 // Note:--Tag is optional
 
-describe('CSS Locators' , () =>{
+describe('CSS Locators', () => {
 
-    it('cssSelectors', () =>{
-     cy.visit("https://nhaiuat.dic.org.in/login");
-     cy.get("#search_query_top").type("T-shirts");
-     cy.get("[name='submit']").click();
-     cy.get(".lighter").contains("T-shirts")  //Assertion
+    it('cssSelectors', () => {
+        cy.visit("https://nhaiuat.dic.org.in/login");
+        cy.get("#search_query_top").type("T-shirts");
+        cy.get("[name='submit']").click();
+        cy.get(".lighter").contains("T-shirts")  //Assertion
     })
 })

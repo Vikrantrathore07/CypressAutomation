@@ -41,7 +41,6 @@ describe('mysuite', () => {
         cy.title().should('eq', 'Your Store');  //home page title
 
 
-
     });
 
 

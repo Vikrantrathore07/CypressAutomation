@@ -15,7 +15,7 @@ describe("Mouse Operations in Cypress", () => {
 
     it('rightClick', () => {
         cy.visit("https://swisnl.github.io/jQuery-contextMenu/demo.html");
-        
+
         // approach 1
         cy.get(".context-menu-one.btn.btn-neutral").trigger("contextmenu");
         cy.get(".context-menu-icon-copy").should('be.visible');
@@ -46,10 +46,10 @@ describe("Mouse Operations in Cypress", () => {
         cy.get("#box6").should('have.text', 'Washington');
         cy.get("#box106").should('have.text', 'United States');
         //force true is used to avoid any overlapping issues
-        cy.get("#box6").drag("#box106", {force: true});
+        cy.get("#box6").drag("#box106", { force: true });
         cy.get("#box106").should('have.text', 'Washington');
     });
-    
+
     it('scrolling', () => {
         cy.visit("https://www.countries-ofthe-world.com/flags-of-the-world.html");
         // cy.get("#footer").scrollIntoView();
@@ -58,15 +58,15 @@ describe("Mouse Operations in Cypress", () => {
         // cy.get("h2").contains('Flags of the World').scrollIntoView({duration: 2000});
 
         //india flag visibility check
-        cy.get(':nth-child(1)> tbody > :nth-child(86) > :nth-child(1) > img').scrollIntoView({duration: 2000});
+        cy.get(':nth-child(1)> tbody > :nth-child(86) > :nth-child(1) > img').scrollIntoView({ duration: 2000 });
         cy.get(':nth-child(1)> tbody > :nth-child(86) > :nth-child(1) > img').should('be.visible');
 
-        cy.get(':nth-child(1) >tbody > :nth-child(4) > :nth-child(1) > img').scrollIntoView({duration: 2000});
+        cy.get(':nth-child(1) >tbody > :nth-child(4) > :nth-child(1) > img').scrollIntoView({ duration: 2000 });
         cy.get(':nth-child(1) >tbody > :nth-child(4) > :nth-child(1) > img').should('be.visible');
 
         cy.get("#footer").scrollIntoView();
         cy.get("div.footer").should('be.visible');
     });
 
-    
+
 });

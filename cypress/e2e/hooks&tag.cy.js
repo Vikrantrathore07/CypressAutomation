@@ -6,13 +6,13 @@
 
 describe('MyTestSuite', () => {
 
-    before(() =>{
+    before(() => {
 
         cy.log("****** Launch application *******");
 
     });
 
-    after(()  => {
+    after(() => {
 
         cy.log("****** Close application *******");
 
@@ -27,7 +27,7 @@ describe('MyTestSuite', () => {
 
         cy.log("****** Logout *******");
     });
-// ---------------------------------------------------------------    
+    // ---------------------------------------------------------------    
     it('search', () => {
 
         cy.log('search test executed');
@@ -39,13 +39,13 @@ describe('MyTestSuite', () => {
         cy.log('advanced search test executed');
 
     });
-    
+
     it('listing products', () => {
 
         cy.log('listing products test executed');
 
 
-    });   
+    });
 
     // it('viewing a product', () => {});  
 

@@ -37,7 +37,7 @@ describe("Reports Generation Test Suite", () => {
     // Sample test case
     cy.visit("https://example.cypress.io");
     cy.contains("type").click();
-    cy.url().should("include", "/commands/actions");                                
+    cy.url().should("include", "/commands/actions");
   });
 
 });

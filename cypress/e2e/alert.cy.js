@@ -1,15 +1,31 @@
 // 1)JavaScript Alert:It will have some text and an OK button
+// ---------------------------------------------------------------------------------
+// Types of Alert in Cypress:
+// 1) Alert (window.alert)   ----- Displays a message with an OK button.
+// 2) Confirm Alert (window.confirm)  --Displays a message with OK and Cancel buttons
+// 3) Prompt Alert (window.prompt)   --Displays a message with an input field and OK/Cancel buttons.
+// 4) Authentication Alert
+// 5) Sweet Alert
+// 6) Sweet Confirm Alert
+// 7) Sweet Prompt Alert
+// 8) File Upload Alert
+// 9) File Download Alert
+// 10) Notification Alert
+// ----------------------------------------------------------------------------------
+
+//1)Javascript alert: It will have some text and an OK button
+
 describe.skip("Alert Handling in Cypress", () => {
   it("should handle JavaScript alerts", () => {
     cy.visit("https://the-internet.herokuapp.com/javascript_alerts");
     cy.get("button[onclick='jsAlert()']").click();
     //cypress event to handle window:alert  -- offical doc: https://docs.cypress.io/api/events/catalog-of-events#App-Events
     cy.on("window:alert", (str) => {
-      expect(str).to.contains("This is a JavaScript alert");  
-    //   expect(str).to.equal("This is a JavaScript alert");
-    // Assertion to verify the alert text
+      expect(str).to.contains("This is a JavaScript alert");
+      //   expect(str).to.equal("This is a JavaScript alert");
+      // Assertion to verify the alert text
     }).then(() => {
-    cy.get("#result").should("have.text", "You successfully clicked an alert");
+      cy.get("#result").should("have.text", "You successfully clicked an alert");
     });
   });
 });
@@ -32,7 +48,7 @@ describe.skip("Confirm Alert Handling in Cypress", () => {
       expect(str).to.contains("This is a JavaScript confirm");
     }).then(() => {
       cy.get("#result").should("have.text", "You clicked: Cancel");
-      
+
     });
   });
 });
@@ -40,55 +56,50 @@ describe.skip("Confirm Alert Handling in Cypress", () => {
 // 3)Javascript prompt alert: It will have some text, a text box to enter value and OK and Cancel buttons
 
 describe("Prompt Alert Handling in Cypress", () => {
-    it("should handle JavaScript prompt alerts", () => {
-        cy.visit("https://the-internet.herokuapp.com/javascript_alerts");
-        const promptInput = "Cypress Test";
-        cy.window().then((win) => {
-        cy.stub(win, "prompt").returns(promptInput);
-        cy.get("button[onclick='jsPrompt()']").click();
-        });
-        cy.get("#result").should("have.text", `You entered: ${promptInput}`);
-        cy.log("Entered text in prompt alert and clicked OK");
-    
-        // To handle Cancel button
-        
-        // cy.window().then((win) => {
-        // cy.stub(win, "prompt").returns(null);
-        // cy.get("button[onclick='jsPrompt()']").click();
-        // });
-        // cy.get("#result").should("have.text", "You entered: null");
-        // cy.log("Clicked Cancel on prompt alert");
+  it("should handle JavaScript prompt alerts", () => {
+    cy.visit("https://the-internet.herokuapp.com/javascript_alerts");
+    const promptInput = "Cypress Test";
+    cy.window().then((win) => {
+      cy.stub(win, 'prompt').returns(promptInput);
+      cy.get("button[onclick='jsPrompt()']").click();
     });
-    });
+    cy.get("#result").should("have.text", `You entered: ${promptInput}`);
+    cy.log("Entered text in prompt alert and clicked OK");
 
+    // To handle Cancel button
+
+    // cy.window().then((win) => {
+    // cy.stub(win, "prompt").returns(null);
+    // cy.get("button[onclick='jsPrompt()']").click();
+    // });
+    // cy.get("#result").should("have.text", "You entered: null");
+    // cy.log("Clicked Cancel on prompt alert");
+  });
+});
 
 
 // 4)Authenticagtion alert: It will have text boxes to enter username and password and OK and Cancel buttons
 
 
+describe("Authentication Alert Handling in Cypress", () => {
 
-   describe("Authentication Alert Handling in Cypress", () => {
+  //    it("should handle Javascript username and password", () => {
+  //        cy.visit("https://the-internet.herokuapp.com/basic_auth");
+  //        cy.get("input[name='username']").type("tomsmith");
+  //        cy.get("input[name='password']").type("SuperSecretPassword!");
+  //        cy.get("button[type='submit']").click();
+  //        cy.get("#flash").should("contain", "You logged into a secure area!");
 
-    //    it("should handle Javascript username and password", () => {
-    //        cy.visit("https://the-internet.herokuapp.com/basic_auth");
-    //        cy.get("input[name='username']").type("tomsmith");
-    //        cy.get("input[name='password']").type("SuperSecretPassword!");
-    //        cy.get("button[type='submit']").click();
-    //        cy.get("#flash").should("contain", "You logged into a secure area!");
-       
-         it("should handle Authentication alerts using cy.visit()", () => {
-              cy.visit("https://the-internet.herokuapp.com/basic_auth", {
-                auth: {
-                     username: "admin",
-                     password: "admin"
-                }
-              });
-              cy.get("div.example p").should("contain", "Congratulations! You must have the proper credentials.");
-   });
+  it("should handle Authentication alerts using cy.visit()", () => {
+    cy.visit("https://the-internet.herokuapp.com/basic_auth", {
+      auth: {
+        username: "admin",
+        password: "admin"
+      }
+    });
+    cy.get("div.example p").should("contain", "Congratulations! You must have the proper credentials.");
+  });
 });
-
-
-
 
 // ------------------------------------------------------------------------------------------------
 // 4)Sweet alert: It is a custom alert created in webpage with some text and OK button
@@ -121,4 +132,5 @@ describe.skip("Alert Handling in Cypress", () => {
       expect(str).to.equal("This is a JavaScript alert");
     });
   });
+
 });

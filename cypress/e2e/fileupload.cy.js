@@ -7,8 +7,8 @@ describe("File Upload", () => {
     //     cy.get("input[type='file']").attachFile(filePath);
     //     cy.get("input[type='submit']").click();
     //     cy.get("h3").should("contain", "File Uploaded!");
-   
-// ==============================>File upload package must be installed and configured<===============================
+
+    // ==============================>File upload package must be installed and configured<===============================
     // npm install --save-dev cypress-file-upload
     it('single file upload using fixture', () => {
         cy.visit("https://the-internet.herokuapp.com/upload");
@@ -40,8 +40,8 @@ describe("File Upload", () => {
         // cy.get("input[type='submit']").click();
         // cy.get("h3").should("contain", "File Uploaded!");
 
-         cy.visit("https://the-internet.herokuapp.com/upload");
-         cy.get("#file-upload").attachFile({ filePath: 'Screenshot (5139).png', fileName: 'myfile.png' });
+        cy.visit("https://the-internet.herokuapp.com/upload");
+        cy.get("#file-upload").attachFile({ filePath: 'Screenshot (5139).png', fileName: 'myfile.png' });
         cy.get("#file-submit").click();
         cy.wait(2000);
         cy.get("div[class='example'] h3").should("have.text", "File Uploaded!");
@@ -89,7 +89,7 @@ describe("File Upload", () => {
         cy.visit("https://davidwalsh.name/demo/multiple-file-upload.php");
         cy.get("#filesToUpload").attachFile(["Screenshot (5139).png", "test1.pd"]);
         cy.wait(2000);
-        cy.get(':nth-child(6) >strong').should('have.text', 'You have selected 2 files for upload:');       
+        cy.get(':nth-child(6) >strong').should('have.text', 'You have selected 2 files for upload:');
     });
 
     it('multiple file upload with drag-and-drop', () => {
@@ -123,8 +123,8 @@ describe("File Upload", () => {
         // cy.get("file-input").shadow().find("#file-name").should("contain", "file.txt");
 
         cy.visit("https://www.htmlelements.com/demos/fileupload/shadow-dom/index.htm");
-        cy.get('.smart-browser-input' , {includeShadowDom:true}).attachFile("Screenshot (5139).png");
+        cy.get('.smart-browser-input', { includeShadowDom: true }).attachFile("Screenshot (5139).png");
         cy.wait(2000);
-        cy.get('.smart-item-name' , {includeShadowDom:true}).should('have.text', 'Screenshot (5139).png');  
+        cy.get('.smart-item-name', { includeShadowDom: true }).should('have.text', 'Screenshot (5139).png');
     });
- });
+});

@@ -1,6 +1,6 @@
 describe('Web Table Handling', () => {
 
-    beforeEach('login', () =>{
+    beforeEach('login', () => {
         cy.visit('https://demo.opencart.com/admin/index.php');
         cy.get('#input-username').type('demo');
         cy.get('#input-password').type('demo');
